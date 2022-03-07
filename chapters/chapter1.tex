@@ -1,0 +1,74 @@
+\chapter{模板的安装与使用}
+\label{chp:installation}
+
+本章将介绍如何配置 \LaTeX 开发环境并使用本模板编译PDF格式的论文。
+\nomenclature{PDF}{Portable Document Format}
+
+\section{环境准备}
+\label{sec:tex_environment}
+
+使用本模板之前首先需要在你的设备上配置好 \LaTeX 开发环境。目前主流的计算机操作系统都对 \LaTeX 有较好的支持，接下来我们将以几个常见操作系统为例介绍环境的配置方法。
+
+\subsection{Microsoft Windows\texttrademark}
+
+\LaTeX 在Microsoft Windows操作系统上的发行版称为 Tex Live，该发行版提供了较为全面的现代 \LaTeX 编译引擎支持，包括了对 XeLaTeX 和 LuaTeX 的良好支持。需要强调的是，一些网络上的教程可能会指导初学者下载 CTeX 安装套件，请不要这样做。CTeX 是刀耕火种时代 \LaTeX 社群针对中文使用者发明的妥协产物，在早期有其使用价值，但现如今在使用时往往会面临宏包缺失和兼容性问题\cite{muzi2020ctex}。为了避免你在issue中反复抱怨编译错误，或者发邮件询问一个本不该出现的问题，请珍爱生命，使用 Tex Live。
+
+截止到本文撰写的时间点，Tex Live的最新版本为Tex Live 2019，你可以在\href{http://tug.org/texlive/}{这个网站}找到下载链接。请尽量选择完全下载并本地安装而非使用下载器在线安装，因为大部分中国IP的连接速度让人绝望。下载时你可以就近选择节点，如果你使用的是校园网的话可以达到一个相当可观的下载速度。
+
+安装过程较为简单，按照步骤设定安装位置即可。需要注意的是，请你在安装完成后设定好环境变量。尽管不设定环境变量在多数情况下也可以工作，但是你将无法使用我们提供的编译脚本。设定环境变量的方法与步骤不在本文的教程范围之内，请自行百度。
+
+\subsection{Apple MacOS\texttrademark}
+
+\LaTeX 在Apple MacOS操作系统上的发行版称为MacTeX。在 MacOS 上安装 MacTeX 之前，请确保你已经正确安装了\href{https://brew.sh/}{homebrew}。当然，你也可以直接从\href{http://www.tug.org/mactex/index.html}{官网}下载 MacTeX套件，但本文建议你使用 homebrew 安装纯净的 MacTeX 发行版。MacTeX 分为基本版和完全版，区别主要在于完全版中默认包含了更多的宏包。安装基本版 MacTeX 已经可以应付你绝大多数 \LaTeX 需求，在终端中输入：
+
+\begin{tcolorbox}
+\begin{lstlisting}
+brew cask install basictex
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 你就可以获得了基本版的 MacTeX。如果你一定要安装完全版，请在终端中输入：
+
+\begin{tcolorbox}
+\begin{lstlisting}
+brew cask install mactex
+\end{lstlisting}
+\end{tcolorbox}
+
+\subsection{Ubuntu Linux}
+
+在 Ubuntu 中配置 \LaTeX 开发环境最为简单。事实上如果你是一个 GNU/Linux 使用者，你应该已经具有了相当的工程能力能够自行配置 \LaTeX 编译环境。但为了本文结构上的完整，我们决定还是多此一笔。在终端中输入：
+
+\begin{tcolorbox}
+\begin{lstlisting}
+sudo apt install texlive-full
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 你就可以在 Ubuntu 设备上部署 Tex Live 发行版。其他 Linux 发行版上的安装方法与 Ubuntu Linux 类似，只是各自使用的包管理器可能有所不同，请参阅各发行版的包管理中心网站，本文不再赘述。
+
+\section{模板的下载与安装}
+\label{sec:template_download}
+
+其实在你看到本手册的同时，我们相信你已经成功地将本模版下载到了你的设备上。因此本来并没有必要在此赘述介绍工程的下载方法。但为了防止你下载的并非最新版本的模板工程，或者本模板被其他网站转载而你恰好从别的网站上下载了本模板，我们觉得还是有必要介绍一下我们指定的下载地址。本模板工程的所有代码都已经在GitHub上开源，你可以从\href{https://github.com/herculas/SEU-master-thesis}{这个地址}找到本模板的最新版本。
+
+将本模板工程文件解压缩到你喜欢的目录下，你就得到了完整的模板工程。为了避免不必要的编译问题，我们建议你将工程保存在全英文的目录下。本模板已在 Windows 10，MacOS 10.15 Catalina，Ubuntu 18.04 Bionic Beaver以及Manjaro 19.0.2 上编译通过，但需要注意的是一些 Linux 发行版中没有安装本模板编译所需的字体文件，如宋体、黑体、楷体和 Times New Roman 等。因此如果你在 Linux 下遭遇了编译问题，请首先检查你的字体是否都已经安装完好。
+
+\section{论文的编译}
+\label{sec:compilation}
+
+如果你使用的是如 Tex Studio，Texpad 或 WinEdt 等 \LaTeX 集成环境，你可以从这些软件中直接启动编译。但是作为一个较为庞大的、涉及多文件的 \LaTeX 工程，你可能需要多次编译才能获得完整的论文。一个完整的编译过程包含下面几个步骤：
+
+\begin{tcolorbox}
+\begin{lstlisting}
+xelatex main
+bibtex main
+makeindex main.nlo -s nomencl.ist -o main.nls
+xelatex main
+xelatex main
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 想要编译一篇学位论文，首先需要对文章结构和原始文本进行一次预编译；随后索引出论文中出现的所有参考文献，并建立参考文献条目与论文引用位置的连接；接下来，根据预编译所产生的文章结构，需要生成文章的图表和术语索引文件；最后通过两次编译将参考文献和图表索引编入正文中，得到完整的PDF版本论文。可以看到这个过程极其复杂，因此我们为你准备了两个脚本文件，来将你从复杂的编译流程中解脱出来。对于 Windows 用户，你可以双击工程根目录下的 make.bat 文件启动编译流程。而 MacOS 和 Linux 用户则可以在命令行中执行根目录下的 make.sh 脚本来启动编译流程。
+
+对于使用类 Unix 操作系统的用户，我们也在 3.4.3 版本之后加入了对 GNU Make 的支持，你现在可以使用 make 命令进行论文的自动化增量编译。GNU Make 工具和 make 命令的相关知识，可以参考\href{https://www.gnu.org/software/make/manual/make.html}{这里}。

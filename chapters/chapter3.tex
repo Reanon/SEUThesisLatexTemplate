@@ -1,0 +1,197 @@
+\chapter{撰写正文}
+
+\section{研究生学位论文的一般格式与顺序}
+
+根据《东南大学研究生学位论文格式规定》\cite{seugs2015rule}第一条之要求，研究生学位论文一般应由如下部分组成：
+
+\begin{enumerate}
+  \item 中文封面
+  \item 中文页面
+  \item 英文封面
+  \item 论文独创性声明和使用授权声明
+  \item 中文内容提要及关键词
+  \item 英文内容提要及关键词
+  \item 目录
+  {\color{cyan} \item 符号、变量、缩略词等本论文专用术语注释表}
+  \item 正文
+  \item 致谢
+  \item 参考文献
+  {\color{cyan} \item 附录
+  \item 中英文索引
+  \item 作者简介（包括在学期间发表的论文和取得的学术成果清单）
+  \item 后记}
+\end{enumerate}
+上述各部分得按照此顺序排列，其中{\color{cyan} 青色}标注的部分为可选部分。我们已经在第\ref{chp:initialization}章中介绍了上述列表中第1-3项关于封面中各条目的填写与生成方法。在本章中，我们将介绍如何撰写论文的正文以及其他部分。
+
+\section{独创性与授权声明}
+
+紧接在中英文封面后的应该是论文的独创性声明和使用授权声明，具体的文本内容请参考《学位论文独创性和使用授权声明》\cite{seugs2018license}。
+
+本模板已经包含了对独创性声明和授权声明的自动生成，当编译引擎执行到
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\makebigcover
+\makecover
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 时会自动到目录下的seumasterthesis.cfg文件中寻找独创性与授权声明的预定义文本。
+
+\section{中英文摘要}
+
+《东南大学研究生学位论文格式规定》\cite{seugs2015rule}的第一条第二款中对论文摘要有如下要求：
+
+~
+
+{\color{black!45}
+\noindent 论文摘要中文约500字左右，英文约200-300词左右，二者应基本对应。它是论文内容的高度概括，应说明研究目的、研究方法、成果和结论，要突出本论文的创造性成果或新的见解，用语简洁、准确。论文摘要后还应注明本文的关键词3-5个。关键词应为公知公用的词和学术术语，不可采用自造字词和略写、符号等，词组不宜过长。
+
+\noindent 英文摘要采用第三人称单数语气介绍该学位论文内容，目的是便于其他文摘摘录，因此在写作英文文摘时不宜用第一人称的语气陈述。叙述的基本时态为一般现在时，确实需要强调过去的事情或者已经完成的行为才使用过去时、完成时等其他时态。可以采用被动语态，但要避免出现用“This paper”作为主语代替作者完成某些研究行为。}
+
+~
+
+打开工程目录下chapters文件夹中的abstract.tex文件，你就可以开始撰写论文的摘要。对于中文摘要，你会看到形如：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{abstract}{生物学, 钓鱼, 铁憨憨}
+我今天没吃饱。下面我将用70页的篇幅说明我今天为啥没吃饱，但是你看完后不一定能看懂。
+\end{abstract}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 这样的结构。在{\codefont $\backslash$begin\{abstract\}}之后的大括号里，你可以填写你的中文关键词。接下来直到{\codefont $\backslash$end\{abstract\}}之前的所有内容都将在编译时被视作你中文摘要的正文内容。英文摘要也与此类似，在abstract.tex文件中，你会看到形如：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{englishabstract}{Biology, Phishing, Fucking Idiot}
+I am not full today. I will use 70 pages to explain why I ain't full, but you may not understand after reading this piece of shit.
+\end{englishabstract}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 这样的结构，你可以把你的英文关键词和摘要填写在相应的位置。main.tex主文件通过：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\input{chapters/abstract}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 将abstract.tex文件作为外部依赖引入到主文件中，编译引擎在执行到该语句时会自动到chapters目录下寻找相应文本。
+
+\section{论文章节及图表目录}
+\label{sec:content}
+
+本模板支持对所有章节和图表自动生成目录，在main.tex中：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\tableofcontents
+\listofothers
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 语句控制了所有目录的自动生成，你不需要进行任何多余的操作。
+
+\section{正文}
+\label{sec:main_body}
+
+我们在chapters目录下为你准备了若干名为chapterx.tex的文件，我们建议你将正文分章节书写在这些文件中。如果我们为你准备的6个章节文件尚且不能够满足你的章节数量需求，你可以继续在该目录下创建新的章节文件，并将其作为外部依赖添加到main.tex主文件中，就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+...
+\input{chapters/chapter6}
+\input{chapters/chapter7}
+\input{chapters/chapter8}
+...
+\end{lstlisting}
+\end{tcolorbox}
+
+本模板对文章的章节结构支持到了小节级别。如果你想创建新的章，请使用：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\chapter{母猪的产后护理}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 这样的命令，它将为你新建一个名为“母猪的产后护理”的章。节与小节的创建方法与此类似：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\section{母猪产后抑郁了怎么办}
+\subsection{母猪的心理疏导}
+\end{lstlisting}
+\end{tcolorbox}
+
+\LaTeX 相比于Microsoft Word等文本编辑器的优势在于，它对交叉引用和自动编号的支持极其自然和友好，以至于你完全不需要耗费精力管理相关的内容。比如说你在正文中需要引用前文的某个章节，你只需要在该章节处添加一个标签，就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\chapter{母猪的产后护理}
+\label{chp:postnatal_care}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 随后如果你想要在其他部分引述该章节的内容。你只需要在相应位置插入该章节的标签，就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+在第\ref{chp:postnatal_care}章，我们介绍了如何对母猪进行产后护理。那么萨达姆是如何根据该经验做好对美国的战斗准备的呢？
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 那么在论文编译时，上面的引用就会被自动替换为相应章节的名称，就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+在第三章，我们介绍了如何对母猪进行产后护理。那么萨达姆是如何根据该经验做好对美国的战斗准备的呢？
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 在论文的撰写过程中请活用该功能，它能为你提供许多方便。
+
+\section{致谢}
+
+你可以在chapters目录下的acknowledgement.tex文件中写下你对任何人的任何感谢，这是学位论文中你唯一可以恣情释放的地方，请尽情享受吧。
+
+\section{参考文献}
+
+和目录与引用类似，本模板支持对参考文献列表的自动生成，在main.tex中：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\thesisbib{seumasterthesis}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 命令实现了这一功能。关于如何引入参考文献以及如何在正文中引用特定的参考文献条目，我们还将在第\ref{chp:bib}章进行详细地介绍。
+
+\section{附录}
+
+根据《东南大学研究生学位论文格式规定》\cite{seugs2015rule}的第一条第八款，你可以将正文有关的原始数据明细表、较多的图表、程序源代码、过长的公式推导等不宜置于正文部分的文本放在附录中。你可以在chapters目录下的appendix.tex文件中添加你的附录。如果你有多个附录的话，可以通过在该文件中新增：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\chapter{沙漠风暴行动D日攻击计划表}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 来添加附录项。每个附录项都将被以大写英文字母编号和排序，并均会新起一页。除此之外，附录内容的撰写方法和正文基本一致。
+
+如果你的论文不需要安排附录，请在main.tex主文件中删去或注释该行：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\input{chapters/appendix}
+\end{lstlisting}
+\end{tcolorbox}
+
+\section{作者简介}
+
+你可以在作者简介部分简要介绍你的姓名、出生年月、籍贯等基本信息，并简要列举你在攻读学位阶段参与的科研课题、发表的学术论文、获取的发明专利或著作权，以及其他的一些科研成果。《东南大学研究生学位论文格式规定》\cite{seugs2015rule}的第一条第十款建议硕士研究生将该部分限制在1000字以内，博士研究生则在2000字以内。
+
+我们在chapters目录下的resume.tex文件中为你准备了一份模板，你可以根据你的实际情况进行修改。

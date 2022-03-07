@@ -1,0 +1,42 @@
+\appendix
+\newtheorem{theorem}{定理}
+
+\chapter{欧几里得第二定理的证明}
+\label{appendix:apps}
+
+	\begin{theorem}
+		欧几里得第二定理(素数有无穷多个)\\
+		证明：用反证法。假设素数有有限个($N$个)，记为$p_1,p_2,\dots,p_N$。则我们构造一个新的数，
+		
+		\[n=p_1p_2\dots p_N+1.\]
+		
+		由于$p_i,i=1,2,\dots,N$为素数，则一定不为$1$。于是对于任意的$p_i,i=1,2,\dots, N$，有
+		
+		\[p_i\not|n\]
+		
+		这表明，要么$n$本身为素数，要么$n$为合数，但是存在$p_1,p_2,\dots,p_N$之外的其他素数能够将$n$进行素因子分解。不管哪种情况，都表明存在更多的素数。定理得证。\qed
+	\end{theorem}
+
+\chapter{$\sqrt{2}$是无理数的证明}
+	\begin{theorem}
+		$\sqrt{2}$是无理数。\\
+		证明：用反证法。假设$\sqrt{2}$是有理数，则可表示为两个整数的商，即$\exists p,q, q\ne0$
+		
+		\[\sqrt{2}=\frac{p}{q}\]
+		
+		不失一般性，我们假设$p,q$是既约的，即$\gcd(p,q)=1$。对上式两边平方可得\\
+		
+		\begin{align*}
+			2& =\frac{p^2}{q^2}\\
+			p^2&=2q^2.
+		\end{align*}
+		
+		表明$p^2$为偶数，因此$p$为偶数，记$p=2m$。则
+		
+		\begin{align*}
+			p^2&=4m^2=2q^2\\
+			q^2&=2m^2.
+		\end{align*}
+		
+		表明$q$也为偶数，因此它们有公共因子$2$。这与它们既约的假设矛盾。定理得证。\qed
+	\end{theorem} 

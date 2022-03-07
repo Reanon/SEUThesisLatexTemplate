@@ -1,0 +1,51 @@
+\chapter{参考文献}
+\label{chp:bib}
+
+\section{导入参考文献}
+
+你有多种方式导入参考文献，最常用的一种是直接从百度学术或谷歌学术中获取文献的 BibTeX 信息，就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+@article{blum2013learning,
+  title={A learning theory approach to noninteractive database privacy},
+  author={Blum, Avrim and Ligett, Katrina and Roth, Aaron},
+  journal={Journal of the ACM (JACM)},
+  volume={60},
+  number={2},
+  pages={1--25},
+  year={2013},
+  publisher={ACM New York, NY, USA}
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+你只需要将其粘贴到模板根目录下的seumasterthesis.bib文件中，就能够在你的论文中引用该文献。
+
+\section{引用参考文献}
+
+在你的正文中，你有两种方法引用参考文献，其中一种是这样的：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\cite{blum2013learning}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 它用于实现上标样式的文献引用，就像这样\cite{blum2013learning}。一般我们引用参考文献均采用这种方式。而在另一些情况下，你所引用的参考文献需要在文章或段落中充当语言成分，这时你应当这样引用参考文献：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\citen{blum2013learning}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 比如在文献综述中，你可能需要这样列举文章所做的工作：
+
+文章\citen{blum2013learning}提出了一种基于非交互式数据库隐私的机器学习理论...
+
+\section{参考文献样式}
+
+本模板的参考文献渲染样式基于GB/T 7714-2015国家标准，模板的BST文件来自南京大学的\href{https://github.com/Haixing-Hu}{胡海星}同学提供的\href{https://github.com/CTeX-org/gbt7714-bibtex-style}{CTeX-org}，在此对他的工作表示感谢。
+
+此外，工程根目录下的附录3是《中华人民共和国关于参考文献著录规则的国家标准 GB/T 7714-2015》的原文，有需要的同学可以参阅。

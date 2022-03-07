@@ -1,0 +1,427 @@
+\chapter{特殊环境与浮动体}
+\label{chp:float}
+
+事实上我们本该假设所有使用本 \LaTeX 论文模板的人都具备了相当的 \LaTeX 使用经验和知识，如果这样那么本章所介绍的内容是不言自明的。但是也存在很多初次接触 \LaTeX 的研究生朋友，因为各种不同的原因而尝试使用 \LaTeX 进行论文排版。因此我们认为还是有必要对这些 \LaTeX 中的基本元素进行反复地强调，以避免我们的个别开发者的邮箱和GitHub Issues被投诉和问询填满。如果你是一个 \LaTeX 老手，你可以直接跳过本章而不用担心漏过任何重要内容。
+
+\section{图片}
+
+\subsection{插入图片}
+在 \LaTeX 文档中插入图片，你需要如下的代码：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=.3\linewidth]{figures/content/4_1}
+  \caption{插入图片示例}
+  \label{fig:4_1}
+\end{figure}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 上面的代码会插入如下效果的图片：
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=.3\linewidth]{figures/content/4_1}
+  \caption{插入图片示例}
+  \label{fig:4_1}
+\end{figure}
+
+\subsection{浮动体环境与位置标识符}
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{figure}[htbp]
+\end{figure}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 声明了一个图片浮动体环境。浮动体是 \LaTeX 中的一种特殊容器，用于容纳占据篇幅较大但不方便分页的内容，如图片或表格。方括号中的字母是浮动体位置标识符，用于向 \LaTeX 编译引擎提出位置建议。常见的位置标识符有以下4种：
+
+\begin{itemize}
+  \setlength{\itemsep}{1.5pt}
+  \setlength{\parsep}{1.5pt}
+  \setlength{\parskip}{1.5pt}
+  \item {\codefont h}：表示here。\LaTeX 编译引擎在面对用{\codefont h}标识的浮动体时会首先尝试在声明位置插入浮动体；
+  \item {\codefont t}：表示top。\LaTeX 编译引擎会尝试在当页顶部安置浮动体；
+  \item {\codefont b}：表示bottom。\LaTeX 编译引擎会尝试在当页底部安置浮动体；
+  \item {\codefont p}：表示float page。\LaTeX 编译引擎会尝试为该浮动体分页并使其占据全页。
+\end{itemize}
+你可以使用多个位置标识符并将其自由组合，你指定的顺序代表你向 \LaTeX 编译引擎所推荐的优先级。需要说明的是，编译引擎并不保证会按照你所指定的位置优先级安置浮动体，而是会根据浮动体大小、其在页面中的位置、文字的相对分布等多种因素决定浮动体的位置。因此在论文写作过程中，我们不建议你使用如“下图”，“上表”等使用方位来指代特定图片或表格的表述，因为你所插入的图片或表格很有可能并不会被编译到你想要它出现的位置。当然，你也可以在标识符前加上 !号来表示强制位置，如{\codefont !h}。但是我们不推荐这样做，因为这可能会造成很多你意想不到的后果。
+
+\subsection{图片的大小与路径}
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\centering
+\includegraphics[width=.5\linewidth]{figures/content/4_1}
+\end{lstlisting}
+\end{tcolorbox}
+
+{\codefont centering}表示浮动体在控制范围内居中。{\codefont includegraphics}语句向编译引擎指定你所想要引入的图片的大小与保存路径。在该命令之后跟随的方括号中，你可以指定图片的长或宽。默认情况下 \LaTeX 会锁定图片的长宽比例，因此你只需要指定长宽中的一个即可。后面的大括号用于填写图片的路径，你可以使用主文件main.tex的相对路径来表示。我们在模板根目录下设置了一个名为figures的目录用于存放图片，我们建议你把论文需要的所有图片放置于该目录下的content文件夹中以便查找和管理。
+
+\subsection{图片的标题与标签}
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\caption{插入图片示例}
+\label{fig:4_1}
+\end{lstlisting}
+\end{tcolorbox}
+
+{\codefont caption}用于指定图片的标题。{\codefont label}用于给图片添加标签，便于你在文本中引用该图片。对于上面的图片，如果我们想要在论文中引述其内容，可以采用如下方法：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+图\ref{fig:4_1}是东南大学的校徽，它的设计中蕴含着多种寓意。
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 上述文本在编译后会呈现这样的效果：
+
+图\ref{fig:4_1}是东南大学的校徽，它的设计中蕴含着多种寓意。
+
+\subsection{图片的并排}
+
+很多时候，你可能会想要将两张图片并排放置以节省排版空间。我们支持并鼓励你这样做。你只需要引入如下的代码：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{figure}[htbp]
+  \centering
+    \begin{minipage}[t]{0.48\textwidth}
+      \centering
+      \includegraphics[width=6cm]{figures/content/4_2}
+      \caption{GitHub}
+      \label{fig:4_2}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+      \centering
+      \includegraphics[width=8cm]{figures/content/4_3}
+      \caption{NPM}
+      \label{fig:4_3}
+    \end{minipage}
+\end{figure}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 编译后的效果是这样的：
+
+\begin{figure}[htbp]
+  \centering
+    \begin{minipage}[t]{0.48\textwidth}
+      \centering
+      \includegraphics[width=4cm]{figures/content/4_2}
+      \caption{GitHub}
+      \label{fig:4_2}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+      \centering
+      \includegraphics[width=3cm]{figures/content/4_3}
+      \caption{npm}
+      \label{fig:4_3}
+    \end{minipage}
+\end{figure}
+
+注意，在上述代码中，我们定义了一个{\codefont figure}浮动体环境，并在其中用两个：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{minipage}[t]{0.48\textwidth}
+\end{minipage}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 包裹了两张图片的声明。和单个图片类似，你也可以指定{\codefont minipage}相对浮动体的位置和大小。编译引擎将根据你{\codefont minipage}的大小调整在一行显示的图片数量。需要注意的是，在两个{\codefont minipage}声明之间请勿空行，因为 \LaTeX 编译引擎会将空行视作换行请求而错误地将你的两张图片上下放置。
+
+\subsection{子图}
+
+和图片并排类似，子图也用于提供在水平方向上组织浮动体的功能。和图片的简单并排不同的是，子图功能一般用于表达同一主题下内容相近或有对比意义的图片或其他浮动体。对于子图功能，你需要引入如下代码：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{figure}[htbp]
+  \centering
+  \subfloat[彩色标志]{\includegraphics[width=.38\textwidth]{figures/content/4_4}}
+  \quad\quad
+  \subfloat[单色标志]{\includegraphics[width=.38\textwidth]{figures/content/4_5}}
+  \caption{东南大学校徽的视觉设计}
+  \label{fig:4_4}
+\end{figure}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 编译后呈现如下效果：
+
+\begin{figure}[htbp]
+  \centering
+  \subfloat[彩色标志]{\includegraphics[width=.38\textwidth]{figures/content/4_4}}
+  \quad\quad
+  \subfloat[单色标志]{\includegraphics[width=.38\textwidth]{figures/content/4_5}}
+  \caption{东南大学校徽的视觉设计}
+  \label{fig:4_4}
+\end{figure}
+
+\noindent {\codefont subfloat}命令指定了图片的子图单元，你可以在命令后的方括号中指定子图的名称，并在随后的大括号中声明子图的版式和索引路径。
+
+\section{表格}
+
+\subsection{插入表格}
+
+在论文中插入表格的方法与图片类似，示例代码如下：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{table}[htbp]
+\centering
+\caption{东南大学院系列表}
+\label{tab:4_1}
+\begin{tabular}{cll}
+\toprule
+院系编号&\multicolumn{1}{c}{院系名称}&\multicolumn{1}{c}{院系英文译名}\\
+\midrule
+01  & 建筑学院      & School of Architecture  \\
+02  & 机械工程学院    & School of Mechanical Engineering \\
+03  & 能源与环境学院   & School of Energy and Environment \\
+04  & 信息科学与工程学院 & School of Information Science and Engineering \\
+05  & 土木工程学院    & School of Civil Engineering \\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 编译后的效果如表 \ref{tab:4_1} 所示。
+
+\begin{table}[htbp]
+\centering
+\caption{东南大学院系列表}
+\label{tab:4_1}
+\begin{tabular}{cll}
+\toprule
+院系编号 & \multicolumn{1}{c}{院系名称}       & \multicolumn{1}{c}{院系英文译名 }     \\
+\midrule
+01                       & 建筑学院      & School of Architecture                        \\
+02                       & 机械工程学院    & School of Mechanical Engineering              \\
+03                       & 能源与环境学院   & School of Energy and Environment              \\
+04                       & 信息科学与工程学院 & School of Information Science and Engineering \\
+05                       & 土木工程学院    & School of Civil Engineering \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent 想要定义一个表格，首先需要声明浮动体环境：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{table}[htbp]
+  \centering
+  \caption{东南大学院系表}
+  \label{tab:4_1}
+\end{table}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 在声明表格浮动体时，你也可以指定该表格的标题和标签，这与图片的声明类似。需要提醒的是，根据《东南大学研究生学位论文格式规定》\cite{seugs2015rule}第一条第五款第六则的要求，表格的标题应该位于表格的上方，而图片的标题应该出现在图片的下方。
+
+表格的具体内容在需要在浮动体中用{\codefont tabular}环境声明：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{tabular}{cll}
+  \toprule
+  院系编号&\multicolumn{1}{c}{院系名称}&\multicolumn{1}{c}{院系英文译名}\\
+  \midrule
+  01  & 建筑学院      & School of Architecture  \\
+  02  & 机械工程学院    & School of Mechanical Engineering \\
+  03  & 能源与环境学院   & School of Energy and Environment \\
+  04  & 信息科学与工程学院 & School of Information Science and Engineering \\
+  05  & 土木工程学院    & School of Civil Engineering \\
+  \bottomrule
+\end{tabular}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent {\codefont tabular}声明后面紧跟着的是表格的纵向对其标准，比如我们的表格有3列，就需要使用3个字母分别指定这3列的对齐准则。你可以使用{\codefont l}表示左对齐，使用{\codefont r}表示右对齐，而使用{\codefont c}表示居中。下面你就可以以行为单位添加表格的内容，行与行间用两条反斜杠隔开，而行中的不同列间使用符号\&隔开。
+
+需要特别注意的是，学术论文一般要求所有表格采用三线表形式。对于三线表，其列间不允许存在竖分割线，而行间仅在表顶、表头与表身、表尾处用三条横线确定表格的结构。因此在表格绘制时，你需要手动指定三线的位置，并在相应的行间添加下面三条指令，分别指代顶线、中间线和尾线：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\toprule
+\midrule
+\bottomrule
+\end{lstlisting}
+\end{tcolorbox}
+
+事实上，在 \LaTeX 文本中插入表格确实需要付出很大的精力对表格的内容和样式进行调整，这也是很多初学者诟病 \LaTeX 的原因之一。为了方便你设计表格，我们向你推荐\href{http://www.tablesgenerator.com/}{一个网站}，该网站能够使用图形化界面创建表格，然后自动生成对应的 \LaTeX 代码。你只需要把代码复制到你的文档中，并稍加调整与修正即可。
+
+\section{算法}
+
+一些理学和工学专业的研究可能需要在论文中插入为代码或算法，本模板同样支持这一功能。示例代码如下：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{algorithm}
+\caption{辗转相除法}
+\label{alg:4_1}
+\begin{algorithmic}
+\Require 一个整数$m$
+\Require 另一个整数$n$
+\Ensure $m$和$n$的最大公约数$r$
+\While {$n > 0$}
+    \State $t \leftarrow m ~ mod ~ n$
+    \State $m \leftarrow n$
+    \State $n \leftarrow t$
+\EndWhile
+\State $r \leftarrow t$
+\end{algorithmic}
+\end{algorithm}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 上述代码的编译结果如算法 \ref{alg:4_1} 所示。
+
+\begin{algorithm}
+\caption{辗转相除法}
+\label{alg:4_1}
+\begin{algorithmic}
+\Require 一个整数$m$
+\Require 另一个整数$n$
+\Ensure $m$和$n$的最大公约数$r$
+\While {$n > 0$}
+    \State $t \leftarrow m ~ mod ~ n$
+    \State $m \leftarrow n$
+    \State $n \leftarrow t$
+\EndWhile
+\State $r \leftarrow t$
+\end{algorithmic}
+\end{algorithm}
+
+和图片和表格类似，声明算法之前你首先要声明用于安放算法伪代码的浮动体：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{algorithm}
+  \caption{辗转相除法}
+  \label{alg:4_1}
+\end{algorithm}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 随后使用{\codefont algorithmic}开始添加你的伪代码的具体内容。在这里由于篇幅所限，我们仅会提示一些{\codefont algorithmic}最简单的用法。对于算法的输入项，你需要使用{\codefont $\backslash$Require}命令指明，而输出项使用{\codefont $\backslash$Ensure}命令。对于声明和赋值语句，请你以{\codefont $\backslash$State}开头，而对于判断、循环语句，应该使用如下的形式表达：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\If \EndIf
+\While \EndWhile
+\For \EndFor
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 请注意，这些语句必须两两配对，否则编译时会出现错误。想要了解更多{\codefont algorithmic}的用法和范例，请自行百度或者参考其官方文档。
+
+\section{公式环境}
+
+很多时候，你的论文可能会涉及公式和逻辑推导，这时你可能需要插入数学公式环境。\LaTeX 中的数学公式分为两种，分别是行内公式和行间公式环境。当你想要在文本叙述中插入数学符号时，你需要的是行内公式。你只需要用两个\$符号包裹你的数学符号即可，就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+对于$\forall \theta \in \Theta$，如果有$\theta$使得...
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 编译后的结果是这个样子的：
+
+对于$\forall \theta \in \Theta$，如果有$\alpha$使得...
+
+但是当你想要表达数学逻辑的推导或者方程的计算时，你可能需要整块行间的区域进行系统性地阐述，这时你需要使用行间公式环境。就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{equation}
+  \label{eq:4_1}
+  f(x) = \frac{f(x_0)}{0!} + \frac{f'(x_0)}{1!}(x-x_0) + \dots + \frac{f^{(0)}(x_0)}{n!}(x-x_0)^n + R_n(x)
+\end{equation}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 上述代码编译后将呈现这样的效果：
+
+\begin{equation}
+  \label{eq:4_1}
+  f(x) = \frac{f(x_0)}{0!} + \frac{f'(x_0)}{1!}(x-x_0) + \dots + \frac{f^{(0)}(x_0)}{n!}(x-x_0)^n + R_n(x)
+\end{equation}
+
+\noindent 公式 \ref{eq:4_1} 展示了单行行间公式的表达方式。有时候你还可能需要展示多行的公式，并且这些公式还要按照某些方式对齐。这时候你需要在{\codefont equation}环境中再嵌套一个{\codefont aligned}环境。在每行需要对齐的部分，你可以使用{\codefont \&}符号显式地指明，就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\begin{equation}
+  \label{eq:4_2}
+  \begin{aligned}
+  \int_{-\infty}^{\infty}f(x)dx & = \frac{1}{2\lambda}\int_{-\infty}^{\infty}e^{-\frac{|x-\mu|}{\lambda}}dx \\
+  & = \frac{1}{2}\int_{-\infty}^{\infty}e^{-|t|}dt \\
+  & = 1
+  \end{aligned}
+\end{equation}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 上述代码编译后将呈现这样的效果：
+
+\begin{equation}
+  \label{eq:4_2}
+  \begin{aligned}
+  \int_{-\infty}^{\infty}f(x)dx & = \frac{1}{2\lambda}\int_{-\infty}^{\infty}e^{-\frac{|x-\mu|}{\lambda}}dx \\
+  & = \frac{1}{2}\int_{-\infty}^{\infty}e^{-|t|}dt \\
+  & = 1
+  \end{aligned}
+\end{equation}
+
+我们只展示了一小部分数学公式的语法，如果你有更复杂的表达需求，请自行百度。
+
+\section{引用浮动体}
+
+我们已经在 \ref{sec:main_body} 节中介绍了正文章节的引用，并在本章展示了对图、表、算法和公式的引用。为了使你在面临大量标签时也能够快速找到你需要引用的内容，同时也为了提升你文档的结构与条理，我们建议你分别用不同的前缀表记不同类型的引用对象，就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\label{chp:chapter_name}
+\label{sec:section_name}
+\label{subsec:subsection_name}
+\label{fig:figure_name}
+\label{tab:table_name}
+\label{alg:algorithm_name}
+\label{eq:equation_name}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 你也可以设计你自己的引用标签，上面的示例只是我们的一个建议。很多编辑器在你输入{\codefont ref}时会自动弹出代码提示，自定义标签配合代码提示能够帮助你更快索引到你想要的引用标签。
+
+\section{代码环境}
+
+一些计算机、软件、电子等专业的毕业论文可能需要展示少量代码，本模板同样也提供了代码环境。比如，下面我们展示了一个Java程序：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=Java]
+public static void main(String[] args) {
+    System.out.println("你好世界");
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+想要实现这样的效果，你只需要将代码包裹在{\codefont lstlisting}环境中。你还可以指定代码所属的语言，这样{\codefont lstlisting}环境就可以为你实现一定程度上的代码高亮。想要查询你所使用的计算机语言是否被{\codefont lstlisting}支持，请直接参阅{\codefont lstlisting}的官方文档。
+
+\section{术语与符号}
+
+你的论文中可能涉及到了大量的符号、英文缩写或术语，你可以在文中对这些符号进行说明，就像这样：
+
+\begin{tcolorbox}
+\begin{lstlisting}[language=TeX]
+\nomenclature{PDF}{Portable Document Format}
+\end{lstlisting}
+\end{tcolorbox}
+
+\noindent 你应该在{\codefont nomenclature}命令后的第一对括号中填写术语或符号名称，下一对括号中填写对术语或符号的解释或定义。当论文编译时，这些术语与符号将会被自动列入目录页后的术语与符号表，并按照英文字母序排列。
