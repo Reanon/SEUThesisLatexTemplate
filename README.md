@@ -6,7 +6,7 @@
 
 ### 推荐使用环境
 
-- 系统：不低于 macOS 12.3.1 
+- 系统： macOS 12.3.1 
 - 推荐编辑器：TexPad
 - 环境：MacTeX2021
 - tex 编译器：xelatex
@@ -77,13 +77,13 @@
 
 - 一般是会自动设置好的
 
-<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220109185436349.png" alt="image-20220109185436349" style="zoom: 33%;" />
+<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220109185436349.png" alt="image-20220109185436349" style="zoom:50%;" />
 
 2、设置排版引擎
 
 设置内容：Tweak typeset settings --> external Typesetter + 自动排版 --> General --> LaTeX + XeLaTeX + 本地
 
-<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220307145324739.png" alt="image-20220307145324739" style="zoom: 25%;" />
+<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220307145324739.png" alt="image-20220307145324739" style="zoom: 50%;" />
 
 3、简单编译一下
 
@@ -198,7 +198,7 @@ main.pdf      % 忽略生成的目标文件
 
 #### 时间安排
 
-一般情况下，毕业论文需要写 2-4 个月，我个人花费了三个半月完成了后续实验和全部论文撰写。初稿花了三个月，降重、通顺论文语句和错字查找花了半个多月的时间。
+一般情况下毕业论文需要写 2-4 个月，我个人花费了三个半月完成了后续实验和全部论文撰写。初稿花了三个月，降重、通顺论文语句和错字查找花了半个多月的时间。
 
 在完成初稿之后，可以请同学好友来通读一遍你的论文，会比自己反复通读论文的效果要好得多。
 
@@ -212,7 +212,7 @@ main.pdf      % 忽略生成的目标文件
 
 学院查重采用的是万方，可以直接上传PDF。但是如果想要自己预先查重，你会发现市面绝大部分的查重工具只接受 word 或者 txt 文件。
 
-从 Latex 转 Word一般有两种方式，一种是将 Latex 生成的 PDF 直接用 WPS 或者 Acrobat 之类的软件转为wo rd，这种方式会有很多乱码，后续修改起来也十分困难。另一种是将各个章节的 Latex 文件复制到 word，然后删除 Latex 里的一些公式和表格，从而保留文字。
+从 Latex 转 Word一般有两种方式，一种是将 Latex 生成的 PDF 直接用 WPS 或者 Acrobat 之类的软件转为word，这种方式会使得 word 里有很多乱码，后续修改起来也十分困难。另一种是将各个章节的 Latex 文件复制到 word，然后删除 Latex 里的一些公式和表格，只保留文字。
 
 我采用的是第二种，下面提供一些快速在 word 中删除引用、表格和替换标题的方法。
 
