@@ -1,14 +1,17 @@
 \documentclass[algorithmlist,figurelist,tablelist,nomlist]{template/seumasterthesis}
 
+\usepackage{multirow} % 处理跨行表格数据
+\usepackage{float}
+\usepackage{lipsum}
 \begin{document}
 
 %% ----------------------------------------------------------------------------
 %%                                 Meta Data
 %% ----------------------------------------------------------------------------
-\categorynumber{TP15}   %《中国图书资料分类法》分类法
-\UDC{001.9}             %《国际十进分类法UDC》的类号
-\secretlevel{公开}       % 学位论文密级分为"公开"、"内部"、"秘密"和"机密"四种
-\studentid{170001}      % 学号要完整，前面的零不能省略
+\categorynumber{TP302.7} %《中国图书资料分类法》分类法
+\UDC{004.9}              %《国际十进分类法UDC》的类号
+\secretlevel{公开}        % 学位论文密级分为"公开"、"内部"、"秘密"和"机密"四种
+\studentid{190001}      % 学号要完整，前面的零不能省略
 
 %% ----------------------------------------------------------------------------
 %%                           Thesis Title and Spine
@@ -17,7 +20,7 @@
     {东南大学 \LaTeX 论文模板使用手册}        % 论文中文标题
     {如何优雅地撰写硕士研究生毕业论文}         % 论文中文副标题，没有可以空着
     {Southeast University \LaTeX ~Thesis Template User Manual}  % 论文英文标题
-    {How to Write a Master Thesis in an Elegant Way}            % 论文英文副标题
+    {How to Write a Master Thesis in an Elegant Way}            % 论文英文副标题，没有可以空着
 
 \spine
 	% 书脊标题与副标题
@@ -28,41 +31,41 @@
 %%                             Author and Advidor
 %% ----------------------------------------------------------------------------
 \author
-    {秦川}                        % 作者中文姓名
-    {QIN Chuan}                  % 作者英文姓名，首字母大写，姓名分开，双字用「-」连接
+    {知心哥哥}                        % 作者中文姓名
+    {ZHI Xin-Ge-Ge}                  % 作者英文姓名，首字母大写，姓名分开，双字用「-」连接
 
 \advisor
-    {张广军}                      % 导师中文姓名
-    {ZHANG Guang-Jun}            % 导师英文姓名
-    {Prof.}                      % 导师职称
+    {张玉健}                % 导师中文姓名
+    {ZHANG Yu-Jian}        % 导师英文姓名
+    {}                     % 导师职称
     
-\coadvisor                       % 联合培养导师姓名，没有可以不写
-    {程光}                        % Co-advisor Name (Chinese)
-    {CHENG Guang}                % Co-advisor Name (English)
-    {Prof.}                      % Co-advisor Title (English)
-
+\coadvisor                 % 联合培养导师姓名，没有可以不写
+    {童飞}                  % 导师中文姓名
+    {TONG Fei}             % 导师英文姓名
+    {A.P.}                 % 导师职称 (English), 如教授（Prof.）、副教授（A.P.）
 %% ----------------------------------------------------------------------------
 %%                              Thesis Defence
 %% ----------------------------------------------------------------------------
 \engthesistype{应用研究}            % 工程硕士论文类型
 \degreetype                        % 学位类型
-    {工学硕士}
+    {专业硕士}
     {Master of Engineering}
-\major{生物医学工程}                 % 一级学科名
-\submajor{神经信息工程}              % 二级学科名
-\defenddate{2020年1月20日}          % 答辩日期 \today
-\authorizedate{2020年1月23日}       % 授予学位日期
-\committeechair{齐康}               % 答辩委员会主席姓名
-\reviewer{王建国}{韩冬青}            % 两位论文评阅人姓名
+\major{网络空间安全}                 % 一级学科名
+\submajor{网络空间安全}              % 二级学科名
+\defenddate{2022年5月3日}          % 答辩日期 \today
+\authorizedate{2022年5月3日}       % 授予学位日期
+\committeechair{}               % 答辩委员会主席姓名
+\reviewer{}{}            % 两位论文评阅人姓名
 \department                        % 学院名称
     {网络空间安全学院}
-    {School of Cyberspace Security}
-\seuthesisthanks                % 资助信息
+    {School of Cyber Science and Engineering}
+\seuthesisthanks                % 资助信息，没有可以不写
     {本文的部分工作受国家自然基金 No. wdnmd666 的支持与帮助，在此表示感谢。}
 
 %% ----------------------------------------------------------------------------
 %%                                  Cover
 %% ----------------------------------------------------------------------------
+% ⚠️ 可以在编写论文的时候注释掉封面，加快编译速度
 \makebigcover  % 生成A3大封面
 \makecover     % 生成小封面
 	 
@@ -91,7 +94,7 @@
 \thesisbib{reference}               % 生成参考文献
 
 %% 下面一句只是用于提示 TexPad 参考文献位置，正式生成时一定要删除
-\bibliography{reference.bib} % 告诉编译器参考文献所在文件
+% \bibliography{reference.bib} % 告诉编译器参考文献所在文件
 
 \input{chapters/appendix}           % 附录
 \input{chapters/resume}             % 作者简介

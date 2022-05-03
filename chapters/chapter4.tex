@@ -48,7 +48,10 @@
   \item {\codefont b}：表示bottom。\LaTeX 编译引擎会尝试在当页底部安置浮动体；
   \item {\codefont p}：表示float page。\LaTeX 编译引擎会尝试为该浮动体分页并使其占据全页。
 \end{itemize}
+
 你可以使用多个位置标识符并将其自由组合，你指定的顺序代表你向 \LaTeX 编译引擎所推荐的优先级。需要说明的是，编译引擎并不保证会按照你所指定的位置优先级安置浮动体，而是会根据浮动体大小、其在页面中的位置、文字的相对分布等多种因素决定浮动体的位置。因此在论文写作过程中，我们不建议你使用如“下图”，“上表”等使用方位来指代特定图片或表格的表述，因为你所插入的图片或表格很有可能并不会被编译到你想要它出现的位置。当然，你也可以在标识符前加上 !号来表示强制位置，如{\codefont !h}。但是我们不推荐这样做，因为这可能会造成很多你意想不到的后果。
+
+来自 Reanon的建议: 一般情况下使用「htbp」就够了。有时候图片表格过大，导致它们出现独占一页的情况，可以使用 「H」来强制指定位置。
 
 \subsection{图片的大小与路径}
 
@@ -266,7 +269,7 @@
 \begin{algorithm}
 \caption{辗转相除法}
 \label{alg:4_1}
-\begin{algorithmic}
+\begin{algorithmic}[1]
 \Require 一个整数$m$
 \Require 另一个整数$n$
 \Ensure $m$和$n$的最大公约数$r$
@@ -286,7 +289,7 @@
 \begin{algorithm}
 \caption{辗转相除法}
 \label{alg:4_1}
-\begin{algorithmic}
+\begin{algorithmic}[1]
 \Require 一个整数$m$
 \Require 另一个整数$n$
 \Ensure $m$和$n$的最大公约数$r$
@@ -321,6 +324,8 @@
 \end{tcolorbox}
 
 \noindent 请注意，这些语句必须两两配对，否则编译时会出现错误。想要了解更多{\codefont algorithmic}的用法和范例，请自行百度或者参考其官方文档。
+
+来自 Reanon 的建议：「$\backslash$begin{algorithmic}[1]」可以显示算法的行号
 
 \section{公式环境}
 

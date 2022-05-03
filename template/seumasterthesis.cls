@@ -495,7 +495,7 @@
         \begin{center}
             \linespread{1.25}
             \erhao\heiti\@title\\
-            \erhao\heiti\@subtitle\\
+%            \erhao\heiti\@subtitle\\    % 修改3 -- Reanon 为了避免空副标题
         \end{center}
     \end{minipage}
 
@@ -839,7 +839,8 @@
                 A Thesis Submitted to
             }\\
             {\universitynameeng}\\
-            {For the Academic Degree of \@degreetypeen}\\
+            % 修改4 -- Reanon, 专业硕士为 Professional，学术硕士为 Academic
+            {For the Professional Degree of \@degreetypeen}\\
 
             %% Author
             {\vspace{0.5in}}
