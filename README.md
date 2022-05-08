@@ -4,32 +4,27 @@
 
 ## 仓库介绍
 
-### 推荐使用环境
-
-- 系统： macOS 12.3.1 
-- 推荐编辑器：TexPad
-- 环境：MacTeX2021
-- tex 编译器：xelatex
-
 ### 文件说明
 
 本仓库文件说明如下：
 
+- `figures/defined`：论文中的模版插图都放在该文件夹中，不可随意更改。
 - `template/seumasterthesix.cls`：论文样式文件，不可随意更改。
 - `template/seumasterthesix.bst`：参考文献的样式文件，不可随意更改。
-- `figures/defined`：论文中的模版插图都放在该文件夹中，不可随意更改。
-- `docs/`：存放着说明论文模版的说明手册以及相关的格式要求，可以删除。
-- `script/`：可以使用该目录下的脚本在不同系统环境中编译论文，如果不需要可以删除。
+- `template/seumasterthesis.cfg`：论文封面格式，不可随意更改。
 
------
+---
 
-- `main.tex`：论文内容排版的编辑文件，可以参考注释做一些修改。
-- `chapter/`：存放各个章节的 .tex 文件，最重要的文件夹。
+- `chapter/`：存放各个章节的 .tex 文件，论文的主体文件。
 - `figures/content`：自己论文中的图放在这个文件夹以区分。
-- `reference.bib`：存放 Bibtex 格式的参考文献，可以自己编辑或者自动生成
+- `main.tex`：论文内容排版的编辑文件，可以参考注释做一些修改。
+- `reference.bib`：存放 Bibtex 格式的参考文献，可以自己编辑或者自动生成。
+- `main.pdf`：论文编译生成的 PDF。
 
 ----
 
+- `docs/`：存放着说明论文模版的说明手册以及相关的格式要求，可以删除。
+- `script/`：可以使用该目录下的脚本在不同系统环境中编译论文，可以删除。
 - `README.md`：本项目说明文件，可放心删除。
 
 ⚠️在非 Windos 系统下，可能需要安装一些字体，包括但不限于楷体、宋体、黑体、Ubuntu mono、Times New Roman 等。如果你在编译论文过程中失败，请首要考虑字体问题。
@@ -56,7 +51,7 @@
 
 <img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220508200147270.png" alt="image-20220508200147270" style="zoom:33%;" />
 
-PS:  油猴（Tampermonkey）上有插件可以加速 GitHub 下载，比直接下载要很多。
+PS:  油猴（Tampermonkey）上有插件可以加速 GitHub 下载，比直接下载要快很多。
 
 <img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220508200325873.png" alt="image-20220508200325873" style="zoom:33%;" />
 
@@ -76,13 +71,21 @@ PS:  油猴（Tampermonkey）上有插件可以加速 GitHub 下载，比直接�
 
 
 
-Overleaf 会记录每次修改，点击 History 就能看到，还可以还原每次修改。如果你无法生成 PDF，那么有两种可能：
+Overleaf 会记录每次修改，点击 History 就能看到，还可以还原每次修改。如果你无法生成 PDF，那么有几种可能：
 
 1. 你没有设置编译器为 「XeLaTex」
 2. 编译时间过长，需要付费。如果你不想付费，那么你可以在本地配置 overleaf 的编译环境，这里不再展开。
 3. 本模版出了问题，你可以根据右侧的**红框提示**来进行修改，试试看能不能修复错误。修复不了的话，也可以提 Issue。
 
 ### Mac 
+
+> 系统：MacOS 12.3.1 
+>
+> 编辑器：TexPad
+>
+> 环境：MacTeX2021
+>
+> Tex 编译器：xelatex
 
 这里使用 MacTeX + TexPad 在 Mac 上搭建一个比较简单实用的本地 Latex 环境。
 
