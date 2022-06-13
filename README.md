@@ -23,9 +23,10 @@
 
 ----
 
-- `docs/`：存放着说明论文模版的说明手册以及相关的格式要求，可以删除。
-- `script/`：可以使用该目录下的脚本在不同系统环境中编译论文，可以删除。
-- `README.md`：本项目说明文件，可放心删除。
+- `docs/`：存放着说明论文模版的说明手册以及相关的格式要求。
+- `docs/xxx.ppt`：毕业答辩 PPT 模板。
+- `script/`：可以使用该目录下的脚本在不同系统环境中编译论文。
+- `README.md`：本项目说明文件。
 
 ⚠️在非 Windos 系统下，可能需要安装一些字体，包括但不限于楷体、宋体、黑体、Ubuntu mono、Times New Roman 等。如果你在本地编译论文过程中失败，请首要考虑字体问题。
 
@@ -95,7 +96,7 @@ Overleaf 会记录每次修改，点击 History 就能看到，还可以还原�
 >
 > [mactex| 清华大学开源软件镜像站 ](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/mac/mactex/)
 
-<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220102205826119.png" alt="image-20220102205826119" style="zoom:50%;" />
+<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220102205826119.png" alt="image-20220102205826119" style="zoom: 33%;" />
 
 傻瓜式安装，一步一步即可。
 
@@ -123,7 +124,7 @@ Overleaf 会记录每次修改，点击 History 就能看到，还可以还原�
 
 设置内容：Tweak typeset settings --> external Typesetter + 自动排版 --> General --> LaTeX + XeLaTeX + 本地
 
-<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220307145324739.png" alt="image-20220307145324739" style="zoom: 50%;" />
+<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220307145324739.png" alt="image-20220307145324739" style="zoom: 33%;" />
 
 3、简单编译一下
 
@@ -155,13 +156,13 @@ Overleaf 会记录每次修改，点击 History 就能看到，还可以还原�
 
 - 甚至可以图片转化为 Latex 公式
 
-![image-20220503100221533](https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220503100221533.png)
+<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220503100221533.png" alt="image-20220503100221533" style="zoom: 33%;" />
 
 #### 在线制作表格
 
 - 可以通过选择 `Booktabs table style` 生成三线表
 
-![image-20220503100310117](https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220503100310117.png)
+<img src="https://aliyun-typora-img.oss-cn-beijing.aliyuncs.com/imgs/image-20220503100310117.png" alt="image-20220503100310117" style="zoom: 25%;" />
 
 ### 制作好看的图片
 
