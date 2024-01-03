@@ -762,7 +762,11 @@
     \begin{center}
         \xiaochuhao
         \includegraphics[height=0.63in]{figures/defined/seu-text-logo.png}\\
-        \includegraphics[scale=0.35]{figures/defined/master.png}
+        \ifengineer
+            \includegraphics[scale=0.35]{figures/defined/master-engineer.png}
+        \else
+            \includegraphics[scale=0.35]{figures/defined/master.png}
+        \fi
 
         %% Thesis title
         \vspace{40pt}
