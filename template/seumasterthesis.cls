@@ -794,7 +794,11 @@
                 \makebox[3.5cm][s]{\xiaoerhao\heiti\advisorpre:  } &
                 \underline {
                     \makebox[6cm][s] {
-                        \xiaoerhao\songti\textbf{\@advisorname}
+                        \hspace*{1.7cm}
+                        \makebox[2.5cm][c]{
+                            \xiaoerhao\songti\textbf{\@advisorname}
+                        }
+                        \makebox[2cm][r]{}
                     }
                 }
                 \\
@@ -802,7 +806,11 @@
                 \ifcoadvisor
                 \underline{
                     \makebox[6cm][s] {
-                        \xiaoerhao\songti\textbf{\@coadvisorname}
+                        \hspace*{1.7cm}
+                        \makebox[2.5cm][c]{
+                            \xiaoerhao\songti\textbf{\@coadvisorname}
+                        }
+                        \makebox[2cm][r]{}
                     }
                 }
                 \else
