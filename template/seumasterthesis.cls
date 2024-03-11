@@ -495,7 +495,7 @@
         \begin{center}
             \linespread{1.25}
             \erhao\heiti\@title\\
-%            \erhao\heiti\@subtitle\\    % 修改3 -- Reanon 为了避免空副标题
+            \erhao\heiti\@subtitle\\
         \end{center}
     \end{minipage}
 
@@ -794,6 +794,7 @@
                 \makebox[3.5cm][s]{\xiaoerhao\heiti\advisorpre:  } &
                 \underline {
                     \makebox[6cm][s] {
+                        % ririv: 修正了双导师名字分别为两字和三字时名字不对齐问题
                         \hspace*{1.7cm}
                         \makebox[2.5cm][c]{
                             \xiaoerhao\songti\textbf{\@advisorname}
@@ -806,6 +807,7 @@
                 \ifcoadvisor
                 \underline{
                     \makebox[6cm][s] {
+                        % ririv: 修正了双导师名字分别为两字和三字时名字不对齐问题
                         \hspace*{1.7cm}
                         \makebox[2.5cm][c]{
                             \xiaoerhao\songti\textbf{\@coadvisorname}
